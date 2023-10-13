@@ -1,0 +1,32 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Factory.Models.Machine;
+
+<h1>Edit Machine</h1>
+<hr/>
+
+<div class="container">
+  <h3>Edit this machine: @Html.DisplayFor(model => model.MachineName)</h3>
+
+  <br/>
+
+  @using (Html.BeginForm())
+  {
+    @Html.HiddenFor(model => model.MachineId)
+
+    @Html.LabelFor(model => model.MachineName)
+    <br/>
+    @Html.EditorFor(model => model.MachineName)
+    <br/>
+    <br/>
+    <input type="submit" value="Save" class="btn btn-success" />
+  }
+</div>
+
+<br>
+
+<div class="container">
+  <h5>@Html.ActionLink("Back to Machines", "Details", new { id = Model.MachineId })</h5>
+</div>
