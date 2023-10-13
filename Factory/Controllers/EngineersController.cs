@@ -30,7 +30,7 @@ namespace Factory.Controllers
     [HttpPost]
     public ActionResult Create(Engineer engineer)
     {
-      if(!ModelState.IsValid)
+      if (!ModelState.IsValid)
       {
         return View(engineer);
       }
@@ -38,3 +38,5 @@ namespace Factory.Controllers
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
+  }
+}
