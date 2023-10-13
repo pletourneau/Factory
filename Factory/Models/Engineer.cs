@@ -12,4 +12,5 @@ namespace Factory.Models
 
     // Collection Navigation Property
     public List<MachineEngineer> JoinEntities { get; set; }
+  }
 }
