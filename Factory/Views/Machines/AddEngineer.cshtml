@@ -1,0 +1,17 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Factory.Models.Engineer
+
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(model => model.EngineerId)
+  @Html.Label("Select engineer")
+  @Html.DropDownList("EngineerId")
+  <input type="submit" value="save" />
+}
+
+<div class="container">
+  <h5>@Html.ActionLink("Back to Engineers", "Index")</h5>
+</div>
