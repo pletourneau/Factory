@@ -1,0 +1,36 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Factory.Models.Machine;
+@using Factory.Models;
+@using System.Collections.Generic;
+
+<h1>Machine Details</h1>
+  <hr />
+
+  <h3>Name of Machine: @Html.DisplayFor(model => model.MachineName)</h3>
+  <br />
+
+  @if (@Model.JoinEntities.Count == 0)
+  {
+    <p>There are no operators for this machine</p>
+  }
+  else
+  {
+    <h4>The operators below can use the machine</h4>
+    <ul>
+    @foreach (MachineEngineer join in Model.JoinEntities)
+      {
+        <li>@join.Engineer.Name</li>
+      }
+    </ul>  
+  }
+
+<br/>
+
+<div class="container">
+  <h5>@Html.ActionLink("Edit Machine", "Edit", new { id = Model.MachineId })</h5>
+  <h5>@Html.ActionLink("Remove Machine", "Delete", new { id = Model.MachineId })</h5>
+  <h5>@Html.ActionLink("Back to Machines", "Index")</h5>
+</div>

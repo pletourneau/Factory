@@ -1,0 +1,36 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Factory.Models.Machine;
+@using Factory.Models;
+@using System.Collections.Generic;
+
+<h1>Engineer Details</h1>
+  <hr />
+
+  <h3>Name of Engineer: @Html.DisplayFor(model => model.Name)</h3>
+  <br />
+
+  @if (@Model.JoinEntities.Count == 0)
+  {
+    <p>This engineer can't do s^&*</p>
+  }
+  else
+  {
+    <h4>This engineer can use the machines below</h4>
+    <ul>
+    @foreach (MachineEngineer join in Model.JoinEntities)
+      {
+        <li>@join.Machine.MachineName</li>
+      }
+    </ul>  
+  }
+
+<br/>
+
+<div class="container">
+  <h5>@Html.ActionLink("Edit Engineer", "Edit", new { id = Model.EngineerId })</h5>
+  <h5>@Html.ActionLink("Remove Engineer", "Delete", new { id = Model.EngineerId })</h5>
+  <h5>@Html.ActionLink("Back to Engineers", "Index")</h5>
+</div>
