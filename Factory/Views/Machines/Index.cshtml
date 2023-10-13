@@ -1,0 +1,22 @@
+@{
+  Layout = "_Layout";
+}
+
+<h1>Machines</h1>
+<hr /> 
+
+@using Factory.Models;
+
+<div class="container">
+  <ul>
+    @foreach (Machine machine in Model)
+    {
+      <li><h4>@Html.ActionLink($"{machine.Name}", "Details", new { id = machine.MachineId })</h4></li>
+    }
+  </ul>
+</div>
+
+<div class="container">
+  <h5>@Html.ActionLink("Add New Machine", "Create")</h5>
+  <h5>@Html.ActionLink("Home", "Index", "Home")</h5>
+</div>
