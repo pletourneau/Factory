@@ -12,23 +12,21 @@
 <h3>Name of Engineer: @Html.DisplayFor(model => model.Name)</h3>
 <br />
 
-@if (Model != null)
+@if (@Model.JoinEntities.Count == 0)
 {
-  @if (@Model.JoinEntities.Count == 0)
-  {
-    <p>This engineer can't do s^&*</p>
-  }
-  else
-  {
-    <h4>This engineer can use the machines below</h4>
-    <ul>
-  @foreach (MachineEngineer join in Model.JoinEntities)
-      {
-        <li>@join.Machine.MachineName</li>
-      }
-    </ul>
-  }
+  <p>This engineer can't do s^&*</p>
 }
+else
+{
+  <h4>This engineer can use the machines below</h4>
+  <ul>
+@foreach (MachineEngineer join in Model.JoinEntities)
+    {
+      <li>@join.Machine.MachineName</li>
+    }
+  </ul>
+}
+
 <br />
 
 <div class="container">
