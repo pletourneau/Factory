@@ -1,8 +1,8 @@
-# _Keith's Coffee_
+# _C&C Music Factory_
 
-#### By _Paul LeTourneau, Seth Gonzales, Joey Palchak_
+#### By _Paul LeTourneau_
 
-#### _A C# / ASP.NET Core MVC application using Entity Framework Core and MySQL._
+#### _A C# / ASP.NET Core MVC application using Entity Framework Core and MySQL to keep track of machines and engineers._
 
 ## Technologies Used
 
@@ -15,7 +15,7 @@
 
 ## Description
 
-Fictional blog for Keith. The user can add Coffee Shops, different Drinks, and create Reviews for a Coffee Shop's version of a particular Drink.
+This app will allow the user to add and remove machines and engineers to/from the factory. The user is able to see what machines an engineer can work on, and what engineers are licensed for which machines. The ability to add licenesed engineers to a machine, and machines an engineer is able to work on, is available in mulitple views.
 
 ## Setup/Installation Requirements
 
@@ -40,7 +40,7 @@ Assuming you've completed the required steps above:
 ```bash
 $ git clone [URL]
 ```
-5. Open your terminal and navigate to this project's production directory called `KeithsCoffee`.
+5. Open your terminal and navigate to this project's production directory called `Factory`.
 6. Within the production directory of the project, create a file called `appsettings.json` and add the following code to it:
    ```json
     {
@@ -72,7 +72,7 @@ $ dotnet watch run
 
 MIT License
 
-Copyright (c) _2023_ _Paul LeTourneau, Seth Gonzales, Joey Palchak_
+Copyright (c) _2023_ _Paul LeTourneau_
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
