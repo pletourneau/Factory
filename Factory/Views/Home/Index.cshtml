@@ -2,14 +2,13 @@
   Layout = "_Layout";
 }
 
-<h1>Factory</h1>
+<h1>Welcome to C&C Music Factory</h1>
+<h3>c'mon lets sweat</h3>
 <hr/>
 
 @using Factory.Models;
 
-<h1>Welcome to the Factory!</h1>
 
-<hr>
 
 <h4>Machines</h4>
 @if (Model["machines"].Length == 0)
@@ -17,9 +16,9 @@
   <p>No machines have been added yet!</p>
 } 
 <ul>
-  @foreach (Machine machinas in Model["machines"])
+  @foreach (Machine machine in Model["machines"])
   {
-    <li>@Html.ActionLink(@machinas.MachineName, "Details", "Machines", new { id = @machinas.MachineId})</li>
+    <li>@machine.MachineName</li>
   }
 </ul>
 
@@ -31,6 +30,11 @@
 <ul>
   @foreach (Engineer engineer in Model["engineers"])
   {
-    <li>@Html.ActionLink(@engineer.Name, "Details", "Engineers", new { id = @engineer.EngineerId})</li>
+    <li>@engineer.Name</li>
   }
 </ul>
+
+<div class="container">
+  <h4>@Html.ActionLink("View/edit All Engineers", "Index", "Engineers")</h4>
+  <h4>@Html.ActionLink("View/edit All Machines", "Index", "Machines")</h4>
+</div>
