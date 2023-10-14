@@ -84,40 +84,25 @@ namespace Factory.Controllers
     public ActionResult AddMachine(int id)
     {
       Engineer thisEngineer = _db.Engineers.FirstOrDefault(engineer => engineer.EngineerId == id);
-      ViewBag.MachineId = new SelectList(_db.Machines, "MachineId", "MachineName");
+      List<Machine> machines = _db.Machines.ToList();
+      ViewBag.MachineId = new SelectList(machines, "MachineId", "MachineName");
 
-      MachineEngineer machineEngineer = new MachineEngineer
-      {
-        Engineer = thisEngineer,
-        EngineerId = thisEngineer.EngineerId
-      };
-
-      return View(machineEngineer);
+      return View(thisEngineer);
     }
 
     [HttpPost]
-    public ActionResult AddMachine(MachineEngineer machineEngineer)
+    public ActionResult AddMachine(Engineer engineer, int machineId)
     {
-      if (ModelState.IsValid)
-      {
-        int machineId = machineEngineer.MachineId;
-        int engineerId = machineEngineer.EngineerId;
-
         #nullable enable
-        MachineEngineer? joinEntity = _db.MachineEngineers.FirstOrDefault(join => join.MachineId == machineId && join.EngineerId == engineerId);
+        MachineEngineer? joinEntity = _db.MachineEngineers.FirstOrDefault(join => join.MachineId == machineId && join.EngineerId == engineer.EngineerId);
         
         #nullable disable
         if (joinEntity == null && machineId != 0)
         {
-          _db.MachineEngineers.Add(new MachineEngineer { MachineId = machineId, EngineerId = engineerId });
+          _db.MachineEngineers.Add(new MachineEngineer() { MachineId = machineId, EngineerId = engineer.EngineerId });
           _db.SaveChanges();
         }
-        return RedirectToAction("Details", new { id = engineerId });
-      }
-
-      // If ModelState is not valid, redisplay the form with errors
-      ViewBag.MachineId = new SelectList(_db.Machines, "MachineId", "MachineName");
-      return View(machineEngineer);
+        return RedirectToAction("Details", new { id = engineer.EngineerId });
     }
         //     [HttpPost]
         //     public ActionResult AddMachine(Engineer engineer, int machineId)

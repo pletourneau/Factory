@@ -2,15 +2,15 @@
   Layout = "_Layout";
 }
 
-@model Factory.Models.Engineer
+@model Factory.Models.Machine
 
-@using (Html.BeginForm())
-{
-  @Html.HiddenFor(model => model.EngineerId)
-  @Html.Label("Select engineer")
-  @Html.DropDownList("EngineerId")
-  <input type="submit" value="save" />
-}
+  @using (Html.BeginForm())
+  {
+    @Html.HiddenFor(model => model.MachineId)
+    @Html.Label("Select engineer")
+    @Html.DropDownList("EngineerId")
+    <input type="submit" value="save" />
+  }
 
 <div class="container">
   <h5>@Html.ActionLink("Back to Engineers", "Index")</h5>
