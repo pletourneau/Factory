@@ -14,15 +14,22 @@
 
 @if (@Model.JoinEntities.Count == 0)
 {
-  <p>This engineer can't do s^&*</p>
+  <p>This engineer is not licensed on any machines</p>
 }
 else
 {
-  <h4>This engineer can use the machines below</h4>
+  <h4>This engineer is licensed on the machines below</h4>
   <ul>
 @foreach (MachineEngineer join in Model.JoinEntities)
     {
-      <li>@join.Machine.MachineName</li>
+      @using (Html.BeginForm("DeleteJoin", "Engineers"))
+        {
+          <li>
+            @Html.ActionLink(@join.Machine.MachineName, "Details", "Machines", new { id = join.Machine.MachineId })
+            @Html.Hidden("joinId", @join.MachineEngineerId)
+            <input type="submit" value="X" class="btn btn-sm btn-x btn-outline-danger" />
+          </li>
+        }
     }
   </ul>
 }

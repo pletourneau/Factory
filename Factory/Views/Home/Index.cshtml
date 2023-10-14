@@ -4,7 +4,33 @@
 
 <h1>Factory</h1>
 <hr/>
-<div class="container">
-  <h4>@Html.ActionLink("View Engineers", "Index", "Engineers")</h4>
-  <h4>@Html.ActionLink("View Machines", "Index", "Machines")</h4>
-</div>
+
+@using Factory.Models;
+
+<h1>Welcome to the Factory!</h1>
+
+<hr>
+
+<h4>Machines</h4>
+@if (Model["machines"].Length == 0)
+{
+  <p>No machines have been added yet!</p>
+} 
+<ul>
+  @foreach (Machine machinas in Model["machines"])
+  {
+    <li>@Html.ActionLink(@machinas.MachineName, "Details", "Machines", new { id = @machinas.MachineId})</li>
+  }
+</ul>
+
+<h4>Engineers</h4>
+@if (Model["engineers"].Length == 0)
+{
+  <p>No engineers have been hired yet!</p>
+} 
+<ul>
+  @foreach (Engineer engineer in Model["engineers"])
+  {
+    <li>@Html.ActionLink(@engineer.Name, "Details", "Engineers", new { id = @engineer.EngineerId})</li>
+  }
+</ul>
