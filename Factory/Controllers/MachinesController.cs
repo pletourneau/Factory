@@ -10,6 +10,7 @@ namespace Factory.Controllers
   public class MachinesController : Controller
   {
     private readonly FactoryContext _db;
+    // private int machineEngineerId;
 
     public MachinesController(FactoryContext db)
     {
@@ -38,7 +39,7 @@ namespace Factory.Controllers
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
-     public ActionResult Edit(int id)
+    public ActionResult Edit(int id)
     {
       Machine thisMachine = _db.Machines.FirstOrDefault(machine => machine.MachineId == id);
       return View(thisMachine);
@@ -81,17 +82,24 @@ namespace Factory.Controllers
     }
     [HttpPost]
     public ActionResult AddEngineer(Machine machine, int engineerId)
-    { 
-      #nullable enable 
+    {
+#nullable enable
       MachineEngineer? joinEntity = _db.MachineEngineers.FirstOrDefault(join => (join.EngineerId == engineerId && join.MachineId == machine.MachineId));
-      #nullable disable
-      
+#nullable disable
+
       if (joinEntity == null && engineerId != 0)
       {
         _db.MachineEngineers.Add(new MachineEngineer() { EngineerId = engineerId, MachineId = machine.MachineId });
         _db.SaveChanges();
       }
       return RedirectToAction("Details", new { id = machine.MachineId });
+    }
+    public ActionResult DeleteJoin(int joinId)
+    {
+      MachineEngineer joinEntry = _db.MachineEngineers.FirstOrDefault(join => join.MachineEngineerId == joinId);
+      _db.MachineEngineers.Remove(joinEntry);
+      _db.SaveChanges();
+      return RedirectToAction("Details", new { id = joinEntry.MachineId });
     }
   }
 }

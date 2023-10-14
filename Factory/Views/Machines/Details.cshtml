@@ -18,19 +18,18 @@
   }
   else
   {
-    <h4>The operators below can use the machine</h4>
+    <h4>Licensed operators</h4>
     <ul>
     @foreach (MachineEngineer join in Model.JoinEntities)
       {
         @using (Html.BeginForm("DeleteJoin", "Machines"))
         {
           <li>
-            @Html.ActionLink(@join.Machine.MachineName, "Details", new { id = join.Machine.MachineId })
-            @Html.Hidden("MachineEngineerId", @join.MachineEngineerId)
+            @Html.ActionLink(@join.Engineer.Name, "Details", "Engineers", new { id = join.Engineer.EngineerId })
+            @Html.Hidden("joinId", @join.MachineEngineerId)
             <input type="submit" value="X" class="btn btn-sm btn-x btn-outline-danger" />
           </li>
         }
-        <li>@join.Engineer.Name</li>
       }
     </ul>  
   }
