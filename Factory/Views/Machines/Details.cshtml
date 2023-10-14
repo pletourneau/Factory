@@ -22,6 +22,14 @@
     <ul>
     @foreach (MachineEngineer join in Model.JoinEntities)
       {
+        @using (Html.BeginForm("DeleteJoin", "Machines"))
+        {
+          <li>
+            @Html.ActionLink(@join.Machine.MachineName, "Details", new { id = join.Machine.MachineId })
+            @Html.Hidden("MachineEngineerId", @join.MachineEngineerId)
+            <input type="submit" value="X" class="btn btn-sm btn-x btn-outline-danger" />
+          </li>
+        }
         <li>@join.Engineer.Name</li>
       }
     </ul>  
