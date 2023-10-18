@@ -15,7 +15,7 @@
 
 ## Description
 
-This app will allow the user to add and remove machines and engineers to/from the factory. The user is able to see what machines an engineer can work on, and what engineers are licensed for which machines. The ability to add licenesed engineers to a machine, and machines an engineer is able to work on, is available in mulitple views.
+This app will allow the user to add and remove machines and engineers to/from the factory. The user is able to see which machines an engineer can work on, and what engineers are licensed for which machines. The ability to add licensed engineers to a machine, and machines an engineer is able to work on, is available in mulitple views.
 
 ## Setup/Installation Requirements
 
